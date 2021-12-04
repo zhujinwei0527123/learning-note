@@ -110,7 +110,7 @@
 - 介绍一下 CMS,G1 收集器。
 - Minor Gc 和 Full GC 有什么不同呢？
   
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/jvm/heap-detail.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/jvm/heap-detail.jpg)
 
 ## <a name="2">虚拟机数据区</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
@@ -133,7 +133,7 @@
 ### <a name="6">Java堆</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 定义:是虚拟机所管理的内存中最大的一块。Java堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。
 - 参数-Xmx和-Xms 最大堆内存和最小堆内存
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/jvm/hotstop-heap.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/jvm/hotstop-heap.jpg)
 
 ### <a name="7">方法区</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 定义：是被各个线程共享的内存区域，它用于存储已被虚拟机加载的类型信息、常量、静态变量、即时编译器编译后的代码缓存等数据。
@@ -150,7 +150,7 @@
 从 Java 7 开始，Java String Pool 存储在 Heap 空间中，由 JVM 进行垃圾回收。 这种方法的优点是降低了 OutOfMemory 错误的风险，因为未引用的字符串将从池中删除，从而释放内存。
 
 ### <a name="9">HotSpot 的后台线程</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/hotspotThread.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/hotspotThread.jpg)
 
 
 ### <a name="10">应用</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
@@ -248,7 +248,7 @@ staticObj随着Test的信息类型存放在方法区，instantObj随着Test对�
 > 然后，清空 Eden 和 survivor From 中的对象；
 3. survivor To 和 survivor From 互换
 > 最后， survivor To 和 survivor From 互换，原 survivor To 成为下一次 GC 时的 survivor From区。
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/edenGc.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/edenGc.jpg)
 
 
 #### <a name="19">相关问题</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
@@ -265,7 +265,7 @@ staticObj随着Test的信息类型存放在方法区，instantObj随着Test对�
 
 ### <a name="20">经典的垃圾收集器</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/jvm/garbage-collector.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/jvm/garbage-collector.jpg)
 
 #### <a name="21">Serial收集器</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 - 定义:一个单线程的垃圾收集器，在垃圾收集时必须暂停其他所有工作线程，直到收集结束。
@@ -279,7 +279,7 @@ staticObj随着Test的信息类型存放在方法区，instantObj随着Test对�
 - 定义：使用标记-整理算法。
 - 用途：可以Parallel Scavenge收集器搭配使用，另一种是作为CMS收集器发生失败的后背方案。
   
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/jvm/serial-1.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/jvm/serial-1.jpg)
 
 #### <a name="23">ParNew收集器</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 - 定义：Serial收集器的多线程并行版本。
@@ -288,7 +288,7 @@ staticObj随着Test的信息类型存放在方法区，instantObj随着Test对�
 - 新生代：标记复制。老年代：标记-整理
 - 常使用参数：-XX:SurvivorRatio、-XX:PretenureSizeThreshold、-XX:HandlePromotionFailure
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/jvm/parNew-1.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/jvm/parNew-1.jpg)
 
 #### <a name="24">Parallel Scavenge 收集器</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 定义：新生代收集器，同样基于标记-复制算法，能够并行收集的多线程收集器。特点是达到一个可控制的吞吐量。
@@ -306,7 +306,7 @@ staticObj随着Test的信息类型存放在方法区，instantObj随着Test对�
 定义：Parallel Scavenge收集器的老年版本，支持多线程并发收集，基于标记-整理算法。
 - 与Parallel Scavenge搭配作为“吞吐量优先”的收集器搭配组合
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/jvm/parallel.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/jvm/parallel.jpg)
 
 #### <a name="26">CMS(Concurrent Mark Sweep)收集器</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 定义：一种以获取最短回收停顿时间为目标的收集器，工作于老年代。
@@ -323,11 +323,12 @@ staticObj随着Test的信息类型存放在方法区，instantObj随着Test对�
     - JDK5中设置CMS在老年代使用了68%便会激活，JDK6默认的设置提高到92%。当运行预留的内存无法满足程序分配新对象的需要，就会出现一次“并发失败”。后备预案为冻结用户线程，启用Serial Old进行老年代的垃圾收集。
     - `-XX:CMSInitiatingOccupancyFraction `可以设置触发CMS收集的百分比。
 > 并发收集失败：收集过程中，老年代被填满；收集完成后，收集的空间仍然无法满足被使用；浮动垃圾
-- 参数-XX:CMSFullGCsBeforeCompaction：作用是要求CMS收集器在执行过若干次不整理的Full GC之后，下一次先进行碎片整理(默认值为0，表示每次FullGC都进行碎片整理) 
-
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/jvm/cms-1.jpg)
-
+- 参数-XX:CMSFullGCsBeforeCompaction：作用是要求CMS收集器在执行过若干次不整理的Full GC之后，下一次先进行碎片整理(默认值为0，表示每次FullGC都进行碎片整理)
+  
 [CMS官网说明](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/cms.html#concurrent_mode_failure)
+
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/jvm/cms-1.jpg)
+
 #### <a name="27">Garbage First 收集器</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 定义：面向服务端应用的垃圾收集器，基于Region的堆内存布局进行垃圾收集，每一个Region都可以根据需要扮演新生代的Eden空间、Survivor空间和老年代空间。Region中还有一类特殊的Humongous区域，专门用来存储大对象，G1认为只要超过了一个Region一半的对象即可认为是大对象。对于Humongous区域，正常当做老年代一部分。
 
@@ -350,8 +351,8 @@ G1整体是基于标记-整理算法实现的收集器，但从局部优势基�
 5. 通过可靠停顿预测模型的建立：根据每个Region的回收成本，分析出收集的平均值、标准偏差、置信度等统计信息。
 - 缺点：内存占用过高，在小内存应用上CMS的表现大于G1。
   
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/jvm/g1.jpg)
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/jvm/g1-memory.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/jvm/g1.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/jvm/g1-memory.jpg)
 
 [G1官网说明](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html)
 #### <a name="28">CMS 与 G1 对比</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
@@ -379,100 +380,102 @@ G1计划作为并发标记扫描收集器（CMS）的长期替代品。
 
 ## <a name="31">java虚拟机监控工具</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 ### <a name="32">jps</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
-- jps (JVM Process Status）: 类似 UNIX 的 ps 命令。用户查看所有 Java 进程的启动类、传入参数和 Java 虚拟机参数等信息；
-  - ```
-    [root@iZuf6ee30yhz3x9bqf63clZ apache-tomcat-8.5.31]# jps -l
-    3796 sun.tools.jps.Jps
-    2903 org.apache.catalina.startup.Bootstrap
-    [root@iZuf6ee30yhz3x9bqf63clZ apache-tomcat-8.5.31]# jps -m
-    3811 Jps -m
-    2903 Bootstrap start
-    [root@iZuf6ee30yhz3x9bqf63clZ apache-tomcat-8.5.31]# jps -v
-    3828 Jps -Dapplication.home=/usr/java/jdk1.8.0_221-amd64 -Xms8m
-    2903 Bootstrap -Djava.util.logging.config.file=/usr/local/apache-tomcat-8.5.31/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -Dcatalina.base=/usr/local/apache-tomcat-8.5.31 -Dcatalina.home=/usr/local/apache-tomcat-8.5.31 -Djava.io.tmpdir=/usr/local/apache-tomcat-8.5.31/temp
-    ```
+jps (JVM Process Status）: 类似 UNIX 的 ps 命令。用户查看所有 Java 进程的启动类、传入参数和 Java 虚拟机参数等信息；
+```
+[root@iZuf6ee30yhz3x9bqf63clZ apache-tomcat-8.5.31]# jps -l
+3796 sun.tools.jps.Jps
+2903 org.apache.catalina.startup.Bootstrap
+[root@iZuf6ee30yhz3x9bqf63clZ apache-tomcat-8.5.31]# jps -m
+3811 Jps -m
+2903 Bootstrap start
+[root@iZuf6ee30yhz3x9bqf63clZ apache-tomcat-8.5.31]# jps -v
+3828 Jps -Dapplication.home=/usr/java/jdk1.8.0_221-amd64 -Xms8m
+2903 Bootstrap -Djava.util.logging.config.file=/usr/local/apache-tomcat-8.5.31/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -Dcatalina.base=/usr/local/apache-tomcat-8.5.31 -Dcatalina.home=/usr/local/apache-tomcat-8.5.31 -Djava.io.tmpdir=/usr/local/apache-tomcat-8.5.31/temp
+```
 ### <a name="33">jstat</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
- jstat（ JVM Statistics Monitoring Tool）: 用于收集 HotSpot 虚拟机各方面的运行数据;
-- jstat -gc -h3 31736 1000 10表示分析进程 id 为 31736 的 gc 情况，每隔 1000ms 打印一次记录，打印 10 次停止，每 3 行后打印指标头部。
-  - ```
-    [root@iZuf6ee30yhz3x9bqf63clZ apache-tomcat-8.5.31]# jstat -gc -h3 2903 1000 10
-     S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT   
-    4160.0 4160.0 2589.7  0.0   33792.0   8242.5   84096.0    55749.8   61440.0 60173.8 7424.0 7132.2    306    1.047   7      0.345    1.393
-    4160.0 4160.0 2589.7  0.0   33792.0   8242.5   84096.0    55749.8   61440.0 60173.8 7424.0 7132.2    306    1.047   7      0.345    1.393
-    4160.0 4160.0 2589.7  0.0   33792.0   8242.5   84096.0    55749.8   61440.0 60173.8 7424.0 7132.2    306    1.047   7      0.345    1.393
-     S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT   
-    4160.0 4160.0 2589.7  0.0   33792.0   8242.5   84096.0    55749.8   61440.0 60173.8 7424.0 7132.2    306    1.047   7      0.345    1.393
-    4160.0 4160.0 2589.7  0.0   33792.0   8242.5   84096.0    55749.8   61440.0 60173.8 7424.0 7132.2    306    1.047   7      0.345    1.393
-    4160.0 4160.0 2589.7  0.0   33792.0   8242.5   84096.0    55749.8   61440.0 60173.8 7424.0 7132.2    306    1.047   7      0.345    1.393
-    ```
+jstat（ JVM Statistics Monitoring Tool）: 用于收集 HotSpot 虚拟机各方面的运行数据;
+
+jstat -gc -h3 31736 1000 10表示分析进程 id 为 31736 的 gc 情况，每隔 1000ms 打印一次记录，打印 10 次停止，每 3 行后打印指标头部。
+ ```
+[root@iZuf6ee30yhz3x9bqf63clZ apache-tomcat-8.5.31]# jstat -gc -h3 2903 1000 10
+ S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT   
+4160.0 4160.0 2589.7  0.0   33792.0   8242.5   84096.0    55749.8   61440.0 60173.8 7424.0 7132.2    306    1.047   7      0.345    1.393
+4160.0 4160.0 2589.7  0.0   33792.0   8242.5   84096.0    55749.8   61440.0 60173.8 7424.0 7132.2    306    1.047   7      0.345    1.393
+4160.0 4160.0 2589.7  0.0   33792.0   8242.5   84096.0    55749.8   61440.0 60173.8 7424.0 7132.2    306    1.047   7      0.345    1.393
+ S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT   
+4160.0 4160.0 2589.7  0.0   33792.0   8242.5   84096.0    55749.8   61440.0 60173.8 7424.0 7132.2    306    1.047   7      0.345    1.393
+4160.0 4160.0 2589.7  0.0   33792.0   8242.5   84096.0    55749.8   61440.0 60173.8 7424.0 7132.2    306    1.047   7      0.345    1.393
+4160.0 4160.0 2589.7  0.0   33792.0   8242.5   84096.0    55749.8   61440.0 60173.8 7424.0 7132.2    306    1.047   7      0.345    1.393
+```
 
 - 相关资料：https://www.xttblog.com/?p=3175
 ### <a name="34">jinfo</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 jinfo (Configuration Info for Java) : Configuration Info forJava,显示虚拟机配置信息;
-  - ```
-    C:\Users\SnailClimb>jinfo  -flag MaxHeapSize 17340
-    -XX:MaxHeapSize=2124414976
-    C:\Users\SnailClimb>jinfo  -flag PrintGC 17340
-    -XX:-PrintGC
-    ```
+ ```
+C:\Users\SnailClimb>jinfo  -flag MaxHeapSize 17340
+-XX:MaxHeapSize=2124414976
+C:\Users\SnailClimb>jinfo  -flag PrintGC 17340
+-XX:-PrintGC
+```
 ### <a name="35">jmap 和 jhat</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 jmap (Memory Map for Java) :生成堆转储快照;
-  - ```
-    [root@iZuf6ee30yhz3x9bqf63clZ apache-tomcat-8.5.31]# jmap -dump:format=b,file=elasticfoam.bin 2903
-    Dumping heap to /usr/local/apache-tomcat-8.5.31/elasticfoam.bin ...
-    Heap dump file created
-    ```
+```
+[root@iZuf6ee30yhz3x9bqf63clZ apache-tomcat-8.5.31]# jmap -dump:format=b,file=elasticfoam.bin 2903
+Dumping heap to /usr/local/apache-tomcat-8.5.31/elasticfoam.bin ...
+Heap dump file created
+```
 
-jhat (JVM Heap Dump Browser ) : 用于分析 heapdump 文件，它会建立一个 HTTP/HTML 服务器，让用户可以在浏览器上查看分析结果;
-  - 与上面的jmap配合使用，分析heapdump的堆信息，会生成具体的服务器。
-  - ```
-    [root@iZuf6ee30yhz3x9bqf63clZ apache-tomcat-8.5.31]# jhat elasticfoam.bin 
-    Reading from elasticfoam.bin...
-    Dump file created Sat Nov 07 14:02:33 CST 2020
-    Snapshot read, resolving...
-    Resolving 131419 objects...
-    Chasing references, expect 26 dots..........................
-    Eliminating duplicate references..........................
-    Snapshot resolved.
-    Started HTTP server on port 7000
-    Server is ready.
-    ```
+jhat (JVM Heap Dump Browser ) : 用于分析 heapdump 文件，它会建立一个 HTTP/HTML 服务器，让用户可以在浏览器上查看分析结果;\
+与上面的jmap配合使用，分析heapdump的堆信息，会生成具体的服务器。
+```
+[root@iZuf6ee30yhz3x9bqf63clZ apache-tomcat-8.5.31]# jhat elasticfoam.bin 
+Reading from elasticfoam.bin...
+Dump file created Sat Nov 07 14:02:33 CST 2020
+Snapshot read, resolving...
+Resolving 131419 objects...
+Chasing references, expect 26 dots..........................
+Eliminating duplicate references..........................
+Snapshot resolved.
+Started HTTP server on port 7000
+Server is ready.
+```
 ### <a name="36">jstack</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 jstack (Stack Trace for Java):生成虚拟机当前时刻的线程快照，线程快照就是当前虚拟机内每一条线程正在执行的方法堆栈的集合。
-  - ```
-    Found one Java-level deadlock:
-    =============================
-    "线程 2":
-      waiting to lock monitor 0x000000000333e668 (object 0x00000000d5efe1c0, a java.lang.Object),
-      which is held by "线程 1"
-    "线程 1":
-      waiting to lock monitor 0x000000000333be88 (object 0x00000000d5efe1d0, a java.lang.Object),
-      which is held by "线程 2"
+
+```
+Found one Java-level deadlock:
+=============================
+"线程 2":
+  waiting to lock monitor 0x000000000333e668 (object 0x00000000d5efe1c0, a java.lang.Object),
+  which is held by "线程 1"
+"线程 1":
+  waiting to lock monitor 0x000000000333be88 (object 0x00000000d5efe1d0, a java.lang.Object),
+  which is held by "线程 2"
+
+Java stack information for the threads listed above:
+===================================================
+"线程 2":
+        at DeadLockDemo.lambda$main$1(DeadLockDemo.java:31)
+        - waiting to lock <0x00000000d5efe1c0> (a java.lang.Object)
+        - locked <0x00000000d5efe1d0> (a java.lang.Object)
+        at DeadLockDemo$$Lambda$2/1078694789.run(Unknown Source)
+        at java.lang.Thread.run(Thread.java:748)
+"线程 1":
+        at DeadLockDemo.lambda$main$0(DeadLockDemo.java:16)
+        - waiting to lock <0x00000000d5efe1d0> (a java.lang.Object)
+        - locked <0x00000000d5efe1c0> (a java.lang.Object)
+        at DeadLockDemo$$Lambda$1/1324119927.run(Unknown Source)
+        at java.lang.Thread.run(Thread.java:748)
+Found 1 deadlock.
+```
     
-    Java stack information for the threads listed above:
-    ===================================================
-    "线程 2":
-            at DeadLockDemo.lambda$main$1(DeadLockDemo.java:31)
-            - waiting to lock <0x00000000d5efe1c0> (a java.lang.Object)
-            - locked <0x00000000d5efe1d0> (a java.lang.Object)
-            at DeadLockDemo$$Lambda$2/1078694789.run(Unknown Source)
-            at java.lang.Thread.run(Thread.java:748)
-    "线程 1":
-            at DeadLockDemo.lambda$main$0(DeadLockDemo.java:16)
-            - waiting to lock <0x00000000d5efe1d0> (a java.lang.Object)
-            - locked <0x00000000d5efe1c0> (a java.lang.Object)
-            at DeadLockDemo$$Lambda$1/1324119927.run(Unknown Source)
-            at java.lang.Thread.run(Thread.java:748)
-    Found 1 deadlock.
-    ```
-    
-- 一个linux的排除高CUP线程的排查案例
-- ```
-  top -c //查看所有进程
-  top -Hp xxx（PID）  // 查看进程具体的线程ID cup情况
-  jstack -l pid > filename // 输出当前快照
-  cat filename| grep '线程ID（16进制）' -C 8     // 查找匹配线程，-C 查看前后多少行数据
-  ```
+一个linux的排除高CUP线程的排查案例
+ ```
+top -c //查看所有进程
+top -Hp xxx（PID）  // 查看进程具体的线程ID cup情况
+jstack -l pid > filename // 输出当前快照
+cat filename| grep '线程ID（16进制）' -C 8     // 查找匹配线程，-C 查看前后多少行数据
+```
 ### <a name="37">jconsole</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 JConsole:Java 监视与管理控制台，很强大，可以检测死锁，查看堆的内存释放情况。
 - 如果需要使用 JConsole 连接远程进程，可以在远程 Java 程序启动时加上下面这些参数:
@@ -487,9 +490,9 @@ JConsole:Java 监视与管理控制台，很强大，可以检测死锁，查看
 
 ### <a name="39">类文件结构</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 -  方法体出现ACC_SYNCHRONIZED 标识，该标识指明了该方法是一个同步方法，JVM 通过该 ACC_SYNCHRONIZED 访问标志来辨别一个方法是否声明为同步方法，从而执行相应的同步调用。
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/synchronizeMethod.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/synchronizeMethod.jpg)
 - 方法体对应的访问范围
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/classArea.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/classArea.jpg)
 
 ### <a name="40">双亲委派模型</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 站在虚拟机角度，只存在两种不同的类加载器：
@@ -692,7 +695,7 @@ public static final int v = 8080;
 
 ## <a name="52">对象创建及使用</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/objcreate.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/objcreate.jpg)
 
 对象的创建
 1. 类加载检查：虚拟机遇到new命令，先检查是否能在常量池定位到一个类的引用，检查这个符号代表的类是否已被加载、解析和初始化过。
@@ -712,7 +715,7 @@ public static final int v = 8080;
 
 
 ### <a name="54">对象内存分布</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/jvm/object-head.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/jvm/object-head.jpg)
 对象在堆内存中的存储布局可以分为三部分：对象头、实例数据（对象有效信息）和对齐填充（仅起占位符作用）\
 
 Hotspot的对象头包括两部分信息：
@@ -721,8 +724,8 @@ Hotspot的对象头包括两部分信息：
 
 ### <a name="55">对象的访问</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 定义：java程序会通过栈上的reference数据来操作堆上的具体对象。具体的对象访问方式由虚拟机决定，主要有两种使用句柄和直接指针两种。
-- 使用句柄访问的话，java堆会划分一块内存作为句柄池。而句柄中分为两块指针，一个是指向对象实例的指针，一个是指向对象类型数据的指针(指向方法区)。好处为整理内存是只需要整理实例的指针。
-- 直接指针访问，对实例中包含数据的类型数据的指针(指向方法区)，好处为减少了指向实例的时间定为开销。
+- 使用句柄访问的话，java堆会划分一块内存作为句柄池。引用会指向句柄，而句柄中分为两块指针，一个是指向对象实例的指针，一个是指向对象类型数据的指针(指向方法区)。好处为整理内存是只需要整理实例的指针。
+- 直接指针访问，引用直接指向堆中的对象实例，而对象实例中包含数据的类型数据的指针(指向方法区)，好处为减少了指向实例的时间定为开销。
 
 HotSpot虚拟机主要使用第二种方式进行访问。
 
@@ -871,7 +874,7 @@ java -Xmx3550m -Xms3550m -Xmn2g -Xss128k -XX:ParallelGCThreads=20 -XX:+UseConcMa
 
 ### <a name="61">young区域(年轻代)</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 1. 对象首先分配到Eden，分配满了触发Young Gc(Minor Gc)，基于复制交换算法，晋升对象年龄+1。
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/edenGc.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/edenGc.jpg)
 2. 年龄到达老年代门槛的晋升老年代。
     - 动态对象年龄判断：如果在 Survivor 空间中相同年龄所有对象大小的总和大于 Survivor 空间的一半，年龄大于或等于该年龄的对象就可以直接进入老年代，无须等到 -XX:MaxTenuringThreshold 中要求的年龄。
     - 晋升失败触发FULL GC的两种场景：
@@ -919,8 +922,8 @@ CMS 在Background回收的过程中，STW 的阶段主要是 Init Mark 和 Final
 [图解垃圾回收](https://www.cnblogs.com/hynblogs/p/12292345.html)
 
 ## <a name="67">Java虚拟机内存调优</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
- ![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/jvmParameter.jpg)
- ![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/jvmGCType.jpg)
+ ![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/jvmParameter.jpg)
+ ![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/jvmGCType.jpg)
 
 
 ### <a name="68">基本概念重述</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
@@ -991,9 +994,9 @@ Mutator：生产垃圾的角色，也就是我们的应用程序，垃圾制造�
 ### <a name="76">案例</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 #### <a name="77">美团技术案例（基于CMS JDK1.8）</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/gcProcess.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/gcProcess.jpg)
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/localIssue.png)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/localIssue.png)
 
 
 ##### <a name="78">场景一：动态扩容引起的空间震荡</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>

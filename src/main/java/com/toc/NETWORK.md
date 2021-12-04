@@ -59,7 +59,7 @@
 - 传输层最主要的协议是 TCP 和 UDP 协议。
 - 应用层：HTTP、FTP、SMTP、TELNET、POP3、DNS
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/network1.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/network1.jpg)
 
 7层结构明细
 
@@ -73,11 +73,11 @@
 第七层：应用层 HTTP,FTP,SNMP等
 ```
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/network2.png)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/network2.png)
 
 一个请求在网络模型中的传输过程
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/other/networkFloat.jpeg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/other/networkFloat.jpeg)
 
 
 ## <a name="2">TCP 三次握手和四次挥手</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
@@ -94,7 +94,7 @@ TCP 用顺序号对每个字节进行计数。序号是 32bit 的无符号数，
 须保持每个方向上的传输数据顺序号。
 
 ### <a name="3">三次握手</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/tcpconnect.png)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/tcpconnect.png)
 
 第一次握手：主机 A 发送位码为 syn＝ 1,随机产生 seq number=1234567 的数据包到服务器，主机 B
 由 SYN=1 知道， A 要求建立联机；
@@ -122,7 +122,7 @@ ack 是否为 1，若正确， 主机 A 会再发送 ack number=(主机 B 的 se
 
 
 ### <a name="4">四次挥手</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/tcpdisconnect.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/tcpdisconnect.jpg)
 
 断开一个 TCP 连接需要“四次挥手”：
 - 客户端 - 发送一个 FIN、seq数据包，用来关闭客户端到服务器的数据传送
@@ -163,7 +163,7 @@ UDP协议（不可靠协议）：无连接的不可靠传输，以数据报文�
   - 使用场景：长连接多用于操作频繁，点对点的通讯，而且连接数不能太多情况。例如：数据库的连接用长连接， 如果用短连接频繁的通信会造成socket错误，而且频繁的socket 创建也是对资源的浪费。 
 
 短连接对于服务器来说管理较为简单，存在的连接都是有用的连接，不需要额外的控制手段。但如果客户请求频繁，将在TCP的建立和关闭操作上浪费时间和带宽。
-  - 场景：WEB网站的http服务一般都用短链接，因为长连接对于服务端来说会耗费一定的资源。像WEB网站这么频繁的成千上万甚至上亿客户端的连接用短连接会更省一些资源。
+> 场景：WEB网站的http服务一般都用短链接，因为长连接对于服务端来说会耗费一定的资源。像WEB网站这么频繁的成千上万甚至上亿客户端的连接用短连接会更省一些资源。
   
 ## <a name="8">http 无状态、无连接</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 **无连接**的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。
@@ -191,8 +191,7 @@ Cookies 存储于浏览器中，只能存储 ASCII 码字符串，每次请求�
 
 #### <a name="11">Cookie 创建</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 当服务器收到 HTTP 请求时，**服务器**可以在响应头里面添加一个 Set-Cookie 选项。浏览器收到响应后通常会保存下 Cookie，之后对该服务器每一次请求中都通过  Cookie 请求头部将 Cookie 信息发送给服务器。另外，Cookie 的过期时间、域、路径、有效期、适用站点都可以根据需要来指定。
-
-- Set-Cookie响应头部和Cookie请求头部
+> Set-Cookie响应头部和Cookie请求头部
 
 服务器使用 Set-Cookie 响应头部向用户代理（一般是浏览器）发送 Cookie信息。一个简单的 Cookie 可能像这样：
 `Set-Cookie: <cookie名>=<cookie值>`
@@ -243,7 +242,7 @@ cookie 属性有：
 - SameParty
 - Priority
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/other/cookies-attribute.png)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/other/cookies-attribute.png)
 
 ##### <a name="14">Domain 属性</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
  Domain 指定了哪些主机可以接受 Cookie。如果不指定，默认为 origin，不包含子域名。如果指定了Domain，则一般包含子域名。
@@ -317,7 +316,7 @@ Https采用混合的加密机制。
    5. 客户端使用自己的RSA秘钥解密，获取服务端会话秘钥。
 2. 第二阶段使用对称加密的方式，进行消息传输。第一阶段通过非对称加密传输的方式，客户端及服务端都获取了对称加密所需的秘钥。
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/HttpsFlow.png)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/HttpsFlow.png)
 
 
 ## <a name="24">证书认证</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
@@ -504,7 +503,7 @@ x7faqgjw**abcdefghijklmnopqrstuvwxyz**
 
 验签：接收方拿到原始报文和数字签名后，用「同一个Hash函数」从报文中生成摘要A。另外，用对方提供的公钥对数字签名进行解密，得到摘要B，对比A和B是否相同，就可以得知报文有没有被篡改过。
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/other/Endorsement.png)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/other/Endorsement.png)
 
 **假如整个公私钥传递的过程都被人窃取了，但是窃取人仍然不知道报文的hash算法，伪造不了报文。**
 ### <a name="45">相关资料</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>

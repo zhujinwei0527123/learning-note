@@ -83,18 +83,18 @@ sdfadf
 
 挂载点：那个进入点的目录我们称为『挂载点』。 
 
-![image](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/linuxFolder.jpg)
+![image](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/linuxFolder.jpg)
 
 ### 权限修改 —— chown、chmod
 - chgrp ：改变文件所属群组
 - chown ：改变文件拥有者
 - chmod ：改变文件的权限, SUID, SGID, SBIT 等等的特性
 
-![image](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/linuxfile.jpg)
+![image](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/linuxfile.jpg)
 
-![image](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/linuxfile1.jpg)
+![image](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/linuxfile1.jpg)
 
-![image](https://github.com/rbmonster/file-storage/blob/main/learning-note/learning/basic/linuxfile2.jpg)
+![image](https://gitee.com/rbmon/file-storage/raw/main/learning-note/learning/basic/linuxfile2.jpg)
 ## 其他资料
 
 ### 单引号与双引号
@@ -438,7 +438,7 @@ wtmp
 ```
 [root@VM-0-16-centos ~] last |wc
      30     288    2194
- 输出的三个数字中，分别代表： 『行、字数、字符数』
+//输出的三个数字中，分别代表：『行、字数、字符数』
 
 [root@VM-0-16-centos ~] last |wc -l
 30
@@ -450,7 +450,7 @@ wtmp
 
 ```
 [dmtsai@study ~]$ last | tee last.list | cut -d " " -f1
-// 这个范例可以让我们将 last 的输出存一份到 last.list 文件中
+//这个范例可以让我们将 last 的输出存一份到 last.list 文件中
 ```
 
 #### split 分割文件
@@ -1144,7 +1144,7 @@ libpam.so.0()(64bit) is needed by (installed) systemd-libs-208-20.el7.x86_64
 libpam.so.0()(64bit) is needed by (installed) libpwquality-1.2.3-4.el7.x86_64
 ....(以下省略)....
 
-// 2. 若仅移除 pam-devel 这个之前范例安装上的软件呢？
+//若仅移除 pam-devel 这个之前范例安装上的软件呢？
 [root@study ~] rpm -e pam-devel <==不会出现任何讯息！
 [root@study ~] rpm -q pam-devel
 package pam-devel is not installed

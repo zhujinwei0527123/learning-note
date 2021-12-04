@@ -29,13 +29,13 @@ java中只要是字符，不管是数字还是英文还是汉字，都占两个�
 完全可以使用内存的方案来解决，即直接将所有词汇load到内存中。
 
 假如存在上千万条的词汇，那么在上述数据量 1.9M*1000*n 会需要几个G的内存资源就要考虑非内存的其他的方案。
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/design/character.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/design/character.jpg)
 
 
 ## <a name="2">DFA算法 (Deterministic Finite Automaton)</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 基本思想是基于状态转移来检索敏感词，只需要扫描一次待检测文本，就能对所有敏感词进行检测。
 
-![avatar](https://github.com/rbmonster/file-storage/blob/main/learning-note/design/sensitiveStructure.jpg)
+![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/design/sensitiveStructure.jpg)
 将敏感词库中相同前缀的词构建成了一个树形结构
 
 在java 中以HashMap结构进行存储
@@ -81,20 +81,12 @@ java中只要是字符，不管是数字还是英文还是汉字，都占两个�
 监控敏感词命中率。如命中率很高则查看具体的内容是否有问题。
 
 
-
-
 ## <a name="7">进阶的设计点</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
-- 汉字拆分(*)： 把汉字拆分后， 逃避检查， 比如“明教” ＝＝》” 日月孝文“。 
-- 跳字处理（引入编辑距离的概念）： 中间插入特殊的字符＝＝》"共－产——党"。 
-- 严格 HTML 过滤(*) ： 通过 HTML 的标签， 实现逃避检查 <font color="red">国 
-`</font> <font color="red">民</font> <font color="red">党</font> (显示成: 国民党) `
+- 汉字拆分(*)： 把汉字拆分后， 逃避检查， 比如“x教” ＝＝》” x孝文“。 
+- 跳字处理（引入编辑距离的概念）： 中间插入特殊的字符＝＝》"x－产——当"。 
+- 严格 HTML 过滤(*) ： 通过 HTML 的标签， 实现逃避检查 `<font color="red">x</font> <font color="red">民</font> <font color="red">当</font> (显示成: x民当) `
 - 简体／繁体转换: 通过写入繁体字逃避检查。 
-- 组合判断(*)： 对于特殊的人物名字， 需要通过组合方式判定， maozedong｜大越进｜独 
-裁 这样的文本同时出现才能判断违禁。 
+- 组合判断(*)： 对于特殊的人物名字， 需要通过组合方式判定， xzedong｜x越进｜独 裁 这样的文本同时出现才能判断违禁。 
 - 过滤评分体系(Bayers)： 建立一个违禁评分题体系。 
-- 故意逃避检查的惩罚系统：包括插字，插入 tag，汉字拆分，繁简体混合等种种伪装系 
-统。 
-- 高亮方法：能够高亮“氵去车仑功”“法 —轮—功”“<font color="red">国 
-`</font> <font color="red">民</font> <font color="red">党</font> (显示成: 国民党)”等种种特殊伪装关键字。`
-
-。
+- 故意逃避检查的惩罚系统：包括插字，插入 tag，汉字拆分，繁简体混合等种种伪装系统。 
+- 高亮方法：能够高亮“x车仑功”“x —轮—功”“`<font color="red">x</font> <font color="red">民</font> <font color="red">当</font> (显示成: x民当)”等种种特殊伪装关键字。`
