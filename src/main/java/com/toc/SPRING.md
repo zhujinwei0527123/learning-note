@@ -40,7 +40,8 @@
 
 ## <a name="1">Spring IOC & AOP</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 ### <a name="2">Spring IOC</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
-IOC 理解
+
+IOC(Inversion of Control) 理解
 1. 控制反转：原来在程序中手动创建对象，现在需要什么对象由IOC提供，一个好处就是对象统一管理。
 2. 依赖注入：将对象之间的相互依赖关系交给 IoC 容器来管理，并由 IoC 容器完成对象的注入。简化开发及对象的创建。
   
@@ -119,7 +120,7 @@ Spring AOP 属于运行时增强，而 AspectJ 是编译时增强。 Spring AOP 
 
 ## <a name="10">Spring 循环依赖</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 对于普通的循环依赖如A 依赖B， B依赖A。在初始化A的时候，会实例化B，实例化B发现需要A的引用，这时候通过缓存返回A的引用。虽然A还未初始化完毕，但是由于是对象的引用，所以最终初始化完成的时候，两个对象均是初始化完整的。
-![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/four/iocAutowire.png)
+![avatar](https://raw.githubusercontent.com/rbmonster/file-storage/main/learning-note/four/iocAutowire.png)
 
 getSingleton(beanName, true)这个方法实际上就是到缓存中尝试去获取Bean，整个缓存分为三级
 - singletonObjects，一级缓存，存储的是所有创建好了的单例Bean
@@ -145,10 +146,10 @@ getSingleton(beanName, true)这个方法实际上就是到缓存中尝试去获�
 > 这个工厂的目的在于**延迟对实例化阶段生成对象的代理**，只有真正发生循环依赖的时候，才去提前生成代理对象，否则只会创建一个工厂并将其放入到三级缓存中，但是不会去通过这个工厂去真正创建对象。
   
 三级缓存引入对于对象延迟实例化的体现。
-![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/four/iocAutowire.jpg)
+![avatar](https://raw.githubusercontent.com/rbmonster/file-storage/main/learning-note/four/iocAutowire.jpg)
 
 不同注入方式对于循环引用的影响
-![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/four/iocAutowire3.jpg)
+![avatar](https://raw.githubusercontent.com/rbmonster/file-storage/main/learning-note/four/iocAutowire3.jpg)
 
 ### <a name="12">相关文章</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 [讲一讲Spring中的循环依赖](https://mp.weixin.qq.com/s/kS0K5P4FdF3v-fiIjGIvvQ)

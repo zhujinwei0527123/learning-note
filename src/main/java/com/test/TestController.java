@@ -28,7 +28,7 @@ public class TestController {
     }
 
 
-    @GetMapping("/stream-reponse/{testId}")
+    @GetMapping("/stream-response/{testId}")
     public void responseTest(@PathVariable("testId") String testId, HttpServletResponse response) throws IOException {
         try(ServletOutputStream outputStream = response.getOutputStream()) {
             byte[] bytes = Files.readAllBytes(Paths.get("/Users/sanwu/private/es-demo/src/main/resources/2021062503821.pdf"));
@@ -39,7 +39,7 @@ public class TestController {
         }
     }
 
-    @GetMapping("/stream-reponse-name/{testId}")
+    @GetMapping("/stream-response-name/{testId}")
     public void responseTest11(@PathVariable("testId") String testId, HttpServletResponse response) throws IOException {
         try(ServletOutputStream outputStream = response.getOutputStream()) {
             byte[] bytes = Files.readAllBytes(Paths.get("/Users/sanwu/private/es-demo/src/main/resources/2021062503821.pdf"));
@@ -77,41 +77,4 @@ public class TestController {
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .body(bytes);
     }
-
-    static class Demo11{
-        String a;
-    }
-
-
-    class Demo22{
-        String b ;
-    }
-
-    public static void main(String[] args) {
-        new TestController().translateNum(25);
-    }
-
-    public int translateNum(int num) {
-        char[] ch = ("" + num).toCharArray();
-        int[] res = new int[ch.length+1];
-        res[0]=1;
-        res[1]=1;
-        for(int i =2;i<res.length;i++) {
-            res[i] = res[i-1];
-            if(isCharacter(ch, i-1)) {
-                res[i] += res[i-2];
-            }
-        }
-        return res[ch.length];
-    }
-
-    private boolean isCharacter(char[] ch, int index) {
-        if(index<1){
-            return false;
-        }
-        int a = ch[index-1] -'0';
-        int b = ch[index] -'0';
-        return b == 1 || (b == 2 && a < 6);
-    }
-
 }

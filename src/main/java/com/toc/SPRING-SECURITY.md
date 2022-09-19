@@ -22,7 +22,7 @@
 &emsp;&emsp;<a href="#19">6.2. 基于AbstractAuthenticationProcessingFilter</a>  
 &emsp;&emsp;&emsp;<a href="#20">6.2.1. WebSecurityConfigurerAdapter的配置demo</a>  
 &emsp;&emsp;&emsp;<a href="#21">6.2.2. JWTAuthenticationFilter</a>  
-&emsp;&emsp;&emsp;<a href="#22">6.2.3. </a>  
+&emsp;&emsp;&emsp;<a href="#22">6.2.3. JwtAuthenticationProvider</a>  
 &emsp;&emsp;<a href="#23">6.3. 基于OncePerRequestFilter</a>  
 &emsp;&emsp;&emsp;<a href="#24">6.3.1. WebSecurityConfigurer</a>  
 &emsp;&emsp;&emsp;<a href="#25">6.3.2. JwtTokenAuthenticationFilter</a>  
@@ -35,9 +35,9 @@
 &emsp;<a href="#32">9. 相关资料</a>  
 # <a name="0">Spring security</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
-[Spring Security官网][https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#servlet-architecture]
+[Spring Security官网](https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#servlet-architecture)
 
-![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/four/spring-security.jpg)
+![avatar](https://raw.githubusercontent.com/rbmonster/file-storage/main/learning-note/four/spring-security.jpg)
 
 
 ## <a name="1">认证 Authentication</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
@@ -157,7 +157,7 @@ for (Map.Entry<String, String> entry : resourcePermissions.entrySet()) {
 进行Session 认证的时候，我们一般使用 **Cookie 来存储 SessionId**,当我们登陆后后端生成一个SessionId放在Cookie中返回给客户端，服务端通过Redis或者其他存储工具记录保存着这个Sessionid，客户端登录以后每次请求都会带上这个SessionId，服务端通过这个SessionId来标示你这个人。如果别人通过 cookie拿到了 SessionId 后就可以代替你的身份访问系统了。
 
 
-![avatar](https://gitee.com/rbmon/file-storage/raw/main/learning-note/four/Cookies-attack.jpg)
+![avatar](https://raw.githubusercontent.com/rbmonster/file-storage/main/learning-note/four/Cookies-attack.jpg)
 
 可以使用token认证的方式避免误点攻击链接导致的跨服务请求问题。
 > 基于token 认证经常将认证凭证存储在local storage中，在请求的时候前端再动态添加凭证到请求中。因此误点的外部链接无法添加token到转发的请求中。
@@ -453,7 +453,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
 
 ```
 
-#### <a name="22"></a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+#### <a name="22">JwtAuthenticationProvider</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
 ```java
 @Slf4j
